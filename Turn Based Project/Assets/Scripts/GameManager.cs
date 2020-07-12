@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviourPun
         // initialize the players
         leftPlayer.photonView.RPC("Initialize", RpcTarget.AllBuffered, PhotonNetwork.CurrentRoom.GetPlayer(1));
         rightPlayer.photonView.RPC("Initialize", RpcTarget.AllBuffered, PhotonNetwork.CurrentRoom.GetPlayer(2));
+
+        photonView.RPC("SetNextTurn", RpcTarget.AllBuffered);
     }
 
     [PunRPC]
