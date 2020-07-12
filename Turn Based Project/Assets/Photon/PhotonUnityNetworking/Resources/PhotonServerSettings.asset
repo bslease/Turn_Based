@@ -37,6 +37,11 @@ MonoBehaviour:
   - DestroyRpc
   - UpdateLobbyUI
   - ChangeScene
+  - Die
+  - TakeDamage
+  - UpdateHealthBar
+  - Attack
+  - Initialize
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
