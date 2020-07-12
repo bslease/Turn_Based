@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5161450197382413317}
   - component: {fileID: 7133939173296252643}
   - component: {fileID: 6998157959949703067}
+  - component: {fileID: 3635464646591505982}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -72,6 +73,31 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &3635464646591505982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161450197382413318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba6b8449d64d76a4b80fa77b6a7a5f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  curHp: 15
+  maxHp: 15
+  moveSpeed: 1
+  minDamage: 3
+  maxDamage: 7
+  maxMoveDistance: 3
+  maxAttackDistance: 3
+  usedThisTurn: 0
+  selectedVisual: {fileID: 5161450198241680803}
+  spriteVisual: {fileID: 5161450198674880943}
+  healthFillImage: {fileID: 5161450197502397514}
+  leftPlayerSprite: {fileID: 21300000, guid: c0519f6248569d749942a71beed207a4, type: 3}
+  rightPlayerSprite: {fileID: 21300000, guid: 91811b3c0f1d3bb4982372eabd1b0c54, type: 3}
 --- !u!1 &5161450197502397492
 GameObject:
   m_ObjectHideFlags: 0

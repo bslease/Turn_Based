@@ -114,6 +114,11 @@ public class Unit : MonoBehaviourPun
     [PunRPC]
     void Initialize(bool isMine)
     {
+        if (isMine)
+            PlayerController.me.units.Add(this);
+        else
+            GameManager.instance.GetOtherPlayer(PlayerController.me).units.Add(this);
+
         healthFillImage.fillAmount = 1.0f;
 
         // set sprite variant
