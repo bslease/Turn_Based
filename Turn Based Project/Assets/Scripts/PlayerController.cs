@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviourPun
         }
 
         // set the UI player text
+        GameUI.instance.SetPlayerText(this);
     }
 
     void SpawnUnits()
@@ -51,15 +52,25 @@ public class PlayerController : MonoBehaviourPun
             unit.usedThisTurn = false;
 
         // update the UI
+        GameUI.instance.UpdateWaitingUnitsText(units.Count);
     }
 
     void Update()
     {
-        if (!photonView.IsMine)
+        //if (!photonView.IsMine)
+        //    return;
+        // photonView.IsMine is always false for player 2 for some reason...
+        // workaround: don't proceed if either
+        // this player controller isn't the current player or
+        // this player controller is the enemy
+        if (GameManager.instance.curPlayer != this || this == enemy)
             return;
 
-        if (Input.GetMouseButtonDown(0) && GameManager.instance.curPlayer == this)
+        //if (Input.GetMouseButtonDown(0) && GameManager.instance.curPlayer == this)
+        if (Input.GetMouseButtonDown(0))
         {
+            //Debug.Log("photonView.IsMine == " + photonView.IsMine);
+
             Vector3 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             TrySelect(new Vector3(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y), 0));
         }
@@ -106,6 +117,7 @@ public class PlayerController : MonoBehaviourPun
         selectedUnit.ToggleSelect(true);
 
         // set the unit info text
+        GameUI.instance.SetUnitInfoText(selectedUnit);
     }
 
     void DeSelectUnit()
@@ -114,6 +126,7 @@ public class PlayerController : MonoBehaviourPun
         selectedUnit = null;
 
         // disable the unit info text
+        GameUI.instance.unitInfoText.gameObject.SetActive(false);
     }
 
     void SelectNextAvailableUnit()
@@ -134,6 +147,7 @@ public class PlayerController : MonoBehaviourPun
             SelectNextAvailableUnit();
 
             // update the UI
+            GameUI.instance.UpdateWaitingUnitsText(units.FindAll(x => x.CanSelect()).Count);
         }
     }
 
@@ -145,6 +159,7 @@ public class PlayerController : MonoBehaviourPun
             SelectNextAvailableUnit();
 
             // update the UI
+            GameUI.instance.UpdateWaitingUnitsText(units.FindAll(x => x.CanSelect()).Count);
         }
     }
 
