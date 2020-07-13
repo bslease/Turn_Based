@@ -285,9 +285,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitsToSpawn:
+  - Soldier
   - Tank
-  - Tank
-  - Tank
+  - Soldier
   spawnPoints:
   - {fileID: 453297251}
   - {fileID: 153177918}
@@ -3088,9 +3088,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitsToSpawn:
+  - Soldier
   - Tank
-  - Tank
-  - Tank
+  - Soldier
   spawnPoints:
   - {fileID: 785536819}
   - {fileID: 1150956451}
