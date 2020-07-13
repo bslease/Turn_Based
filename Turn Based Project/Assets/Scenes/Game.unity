@@ -655,7 +655,7 @@ MonoBehaviour:
   leftPlayer: {fileID: 1829862470}
   rightPlayer: {fileID: 131542035}
   curPlayer: {fileID: 0}
-  postGameTime: 0
+  postGameTime: 5
 --- !u!114 &756220840
 MonoBehaviour:
   m_ObjectHideFlags: 0

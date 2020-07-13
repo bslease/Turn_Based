@@ -43,6 +43,7 @@ MonoBehaviour:
   - Attack
   - Initialize
   - SetNextTurn
+  - WinGame
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

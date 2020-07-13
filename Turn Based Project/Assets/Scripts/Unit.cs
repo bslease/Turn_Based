@@ -96,7 +96,17 @@ public class Unit : MonoBehaviourPun
     [PunRPC]
     void Die()
     {
+        if (!photonView.IsMine)
+            PlayerController.enemy.units.Remove(this);
+        else
+        {
+            PlayerController.me.units.Remove(this);
 
+            // check the win condition
+            GameManager.instance.CheckWinCondition();
+
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
     [PunRPC]
@@ -109,6 +119,7 @@ public class Unit : MonoBehaviourPun
     public void Attack(Unit unitToAttack)
     {
         usedThisTurn = true;
+        unitToAttack.photonView.RPC("TakeDamage", PlayerController.enemy.photonPlayer, Random.Range(minDamage, maxDamage + 1));
     }
 
     [PunRPC]

@@ -60,4 +60,26 @@ public class GameManager : MonoBehaviourPun
     {
         return player == leftPlayer ? rightPlayer : leftPlayer;
     }
+
+    public void CheckWinCondition()
+    {
+        if (PlayerController.me.units.Count == 0)
+        {
+            photonView.RPC("WinGame", RpcTarget.All, PlayerController.enemy == leftPlayer ? 0 : 1);
+        }
+    }
+
+    [PunRPC]
+    void WinGame(int winner)
+    {
+        PlayerController player = winner == 0 ? leftPlayer : rightPlayer;
+        GameUI.instance.SetWinText(player.photonPlayer.NickName);
+        Invoke("GoBackToMenu", postGameTime);
+    }
+
+    void GoBackToMenu()
+    {
+        PhotonNetwork.LeaveRoom();
+        NetworkManager.instance.ChangeScene("Menu");
+    }
 }
